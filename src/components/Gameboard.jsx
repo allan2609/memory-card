@@ -1,9 +1,16 @@
 import Card from "./Card.jsx";
 
-export default function Gameboard() {
+export default function Gameboard({ cards }) {
+
     return (
     <>
-      <Card></Card>
+      {cards.map((card) => {
+        return (
+          <Card
+            key={card.id}
+          />
+        );
+      })}
     </>
   )
 }

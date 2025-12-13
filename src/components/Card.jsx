@@ -1,4 +1,5 @@
-export default function Card() {
+export default function Card({ id }) {
+
   return (
     <>
       <h2>Card name</h2>
