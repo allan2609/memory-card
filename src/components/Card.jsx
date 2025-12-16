@@ -1,10 +1,10 @@
-export default function Card({ id, image }) {
+export default function Card({ id, image, handleCardClick }) {
 
   return (
     <>
       <h2>Card name</h2>
       <p>card info</p>
-      <img src={image} />
+      <img key={id} src={image} onClick={() => handleCardClick(id)} />
     </>
   )
 }

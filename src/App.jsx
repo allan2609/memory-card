@@ -6,24 +6,28 @@ import Gameboard from "./components/Gameboard";
 function App() {
 
   const initialCards = [
-  { id: 1, image: "placeholder.jpg", clicked: false },
-  { id: 2, image: "placeholder.jpg", clicked: false },
-  { id: 3, image: "placeholder.jpg", clicked: false },
-  { id: 4, image: "placeholder.jpg", clicked: false },
-  { id: 5, image: "placeholder.jpg", clicked: false },
-  { id: 6, image: "placeholder.jpg", clicked: false },
-  { id: 7, image: "placeholder.jpg", clicked: false },
-  { id: 8, image: "placeholder.jpg", clicked: false },
-  { id: 9, image: "placeholder.jpg", clicked: false },
-  { id: 10, image: "placeholder.jpg", clicked: false },
-  { id: 11, image: "placeholder.jpg", clicked: false },
-  { id: 12, image: "placeholder.jpg", clicked: false }
-];
+    { id: 1, image: "placeholder.jpg", clicked: false },
+    { id: 2, image: "placeholder.jpg", clicked: false },
+    { id: 3, image: "placeholder.jpg", clicked: false },
+    { id: 4, image: "placeholder.jpg", clicked: false },
+    { id: 5, image: "placeholder.jpg", clicked: false },
+    { id: 6, image: "placeholder.jpg", clicked: false },
+    { id: 7, image: "placeholder.jpg", clicked: false },
+    { id: 8, image: "placeholder.jpg", clicked: false },
+    { id: 9, image: "placeholder.jpg", clicked: false },
+    { id: 10, image: "placeholder.jpg", clicked: false },
+    { id: 11, image: "placeholder.jpg", clicked: false },
+    { id: 12, image: "placeholder.jpg", clicked: false }
+  ];
+
+  function handleCardClick(id) {
+    console.log("card " + id + " was clicked");
+  }
 
   return (
     <>
       <Header></Header>
-      <Gameboard cards={initialCards}></Gameboard>
+      <Gameboard cards={initialCards} handleCardClick={handleCardClick}></Gameboard>
     </>
   )
 }
