@@ -5,7 +5,7 @@ import Gameboard from "./components/Gameboard";
 
 function App() {
 
-  const initialCards = [
+  const [cards, setCards] = useState([
     { id: 1, image: "placeholder.jpg", clicked: false },
     { id: 2, image: "placeholder.jpg", clicked: false },
     { id: 3, image: "placeholder.jpg", clicked: false },
@@ -18,7 +18,7 @@ function App() {
     { id: 10, image: "placeholder.jpg", clicked: false },
     { id: 11, image: "placeholder.jpg", clicked: false },
     { id: 12, image: "placeholder.jpg", clicked: false }
-  ];
+  ]);
 
   function handleCardClick(id) {
     console.log("card " + id + " was clicked");
@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <Gameboard cards={initialCards} handleCardClick={handleCardClick}></Gameboard>
+      <Gameboard cards={cards} handleCardClick={handleCardClick}></Gameboard>
     </>
   )
 }
