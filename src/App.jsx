@@ -22,6 +22,15 @@ function App() {
 
   function handleCardClick(id) {
     console.log("card " + id + " was clicked");
+    const newCards = cards.map(card => {
+      if (card.id === id) {
+        return { ...card, clicked: true }
+      } else {
+        return card;
+      }
+    });
+    setCards(newCards);
+    console.log(newCards);
   }
 
   return (
