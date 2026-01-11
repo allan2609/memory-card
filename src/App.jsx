@@ -5,6 +5,10 @@ import Gameboard from "./components/Gameboard";
 
 function App() {
 
+  const [gameStatus, setGameStatus] = useState("playing");
+
+  const [score, setScore] = useState(0);
+
   const [cards, setCards] = useState([
     { id: 1, image: "placeholder.jpg", clicked: false },
     { id: 2, image: "placeholder.jpg", clicked: false },
@@ -21,7 +25,18 @@ function App() {
   ]);
 
   function handleCardClick(id) {
-    console.log("card " + id + " was clicked");
+    console.log("Card " + id + " was clicked");
+    console.log("Game status: " + gameStatus);
+    const clickedCard = cards.find(card => card.id === id);
+
+    if (clickedCard.clicked === true) {
+      setGameStatus("lost");
+      console.log("Game over");
+      return;
+    }
+
+    setScore(score + 1);
+
     const newCards = cards.map(card => {
       if (card.id === id) {
         return { ...card, clicked: true }
@@ -29,8 +44,8 @@ function App() {
         return card;
       }
     });
+    
     setCards(newCards);
-    console.log(newCards);
   }
 
   return (
