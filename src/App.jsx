@@ -6,8 +6,8 @@ import Gameboard from "./components/Gameboard";
 function App() {
 
   const [gameStatus, setGameStatus] = useState("playing");
-
   const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
 
   const [cards, setCards] = useState([
     { id: 1, image: "placeholder.jpg", clicked: false },
@@ -27,9 +27,13 @@ function App() {
   function handleCardClick(id) {
     console.log("Card " + id + " was clicked");
     console.log("Game status: " + gameStatus);
+    console.log("Current score: " + score + ", best score: " + bestScore);
     const clickedCard = cards.find(card => card.id === id);
 
     if (clickedCard.clicked === true) {
+      if (score > bestScore) {
+        setBestScore(score);
+      }
       setGameStatus("lost");
       console.log("Game over");
       return;
