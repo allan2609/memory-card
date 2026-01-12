@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header"
 import Gameboard from "./components/Gameboard";
@@ -24,10 +24,13 @@ function App() {
     { id: 12, image: "placeholder.jpg", clicked: false }
   ]);
 
+  useEffect(() => {
+    console.log("Current score: " + score + ", best score: " + bestScore);
+  }, [score, bestScore]);
+
+
   function handleCardClick(id) {
     console.log("Card " + id + " was clicked");
-    console.log("Game status: " + gameStatus);
-    console.log("Current score: " + score + ", best score: " + bestScore);
     const clickedCard = cards.find(card => card.id === id);
 
     if (clickedCard.clicked === true) {
