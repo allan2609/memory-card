@@ -37,8 +37,7 @@ function App() {
       if (score > bestScore) {
         setBestScore(score);
       }
-      setGameStatus("lost");
-      console.log("Game over");
+      resetGame();
       return;
     }
 
@@ -52,6 +51,18 @@ function App() {
       }
     });
     
+    setCards(newCards);
+  }
+
+  function resetGame() {
+    console.log("Game over! Your score was " + score);
+    setScore(0);
+    setGameStatus("playing");
+
+    const newCards = cards.map(card => {
+      return { ...card, clicked: false }
+    });
+
     setCards(newCards);
   }
 
