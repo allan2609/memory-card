@@ -37,7 +37,7 @@ function App() {
       if (score > bestScore) {
         setBestScore(score);
       }
-      resetGame();
+      setGameStatus("lost");
       return;
     }
 
@@ -68,7 +68,7 @@ function App() {
 
   return (
     <>
-      <Header></Header>
+      <Header gameStatus={gameStatus} resetGame={resetGame}></Header>
       <Gameboard cards={cards} handleCardClick={handleCardClick}></Gameboard>
     </>
   )
