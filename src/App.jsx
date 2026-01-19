@@ -30,6 +30,7 @@ function App() {
 
 
   function handleCardClick(id) {
+    if (gameStatus === "lost") return;
     console.log("Card " + id + " was clicked");
     const clickedCard = cards.find(card => card.id === id);
 
