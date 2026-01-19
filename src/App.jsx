@@ -28,43 +28,35 @@ function App() {
     console.log("Current score: " + score + ", best score: " + bestScore);
   }, [score, bestScore]);
 
-
   function handleCardClick(id) {
     if (gameStatus === "lost") return;
-    console.log("Card " + id + " was clicked");
+
     const clickedCard = cards.find(card => card.id === id);
 
     if (clickedCard.clicked === true) {
-      if (score > bestScore) {
-        setBestScore(score);
-      }
+      setBestScore(prevBest => Math.max(prevBest, score));
       setGameStatus("lost");
       return;
     }
 
-    setScore(score + 1);
+    setScore(prevScore => prevScore + 1);
 
-    const newCards = cards.map(card => {
-      if (card.id === id) {
-        return { ...card, clicked: true }
-      } else {
-        return card;
-      }
-    });
-    
-    setCards(newCards);
+    setCards(prevCards =>
+      prevCards.map(card =>
+        card.id === id
+          ? { ...card, clicked: true }
+          : card
+      )
+    );
   }
 
   function resetGame() {
-    console.log("Game over! Your score was " + score);
     setScore(0);
     setGameStatus("playing");
 
-    const newCards = cards.map(card => {
-      return { ...card, clicked: false }
-    });
-
-    setCards(newCards);
+    setCards(prevCards =>
+      prevCards.map(card => ({ ...card, clicked: false }))
+    );
   }
 
   return (
