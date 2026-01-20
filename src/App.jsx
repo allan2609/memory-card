@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header"
 import Gameboard from "./components/Gameboard";
@@ -23,10 +23,6 @@ function App() {
     { id: 11, image: "placeholder.jpg", clicked: false },
     { id: 12, image: "placeholder.jpg", clicked: false }
   ]);
-
-  useEffect(() => {
-    console.log("Current score: " + score + ", best score: " + bestScore);
-  }, [score, bestScore]);
 
   function handleCardClick(id) {
     if (gameStatus === "lost") return;
@@ -61,7 +57,7 @@ function App() {
 
   return (
     <>
-      <Header gameStatus={gameStatus} resetGame={resetGame}></Header>
+      <Header gameStatus={gameStatus} resetGame={resetGame} score={score} bestScore={bestScore}></Header>
       <Gameboard cards={cards} handleCardClick={handleCardClick}></Gameboard>
     </>
   )

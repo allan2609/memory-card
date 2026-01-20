@@ -1,8 +1,8 @@
-export default function Scoreboard() {
+export default function Scoreboard({ score, bestScore }) {
   return (
     <>
-      <p>Current score: </p>
-      <p>Best score: </p>
+      <p>Current score: {score}</p>
+      <p>Best score: {bestScore}</p>
     </>
   )
 }
