@@ -9,7 +9,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
 
-  const [cards, setCards] = useState([
+  const [cards, setCards] = useState(shuffle([
     { id: 1, image: "placeholder.jpg", clicked: false },
     { id: 2, image: "placeholder.jpg", clicked: false },
     { id: 3, image: "placeholder.jpg", clicked: false },
@@ -22,13 +22,13 @@ function App() {
     { id: 10, image: "placeholder.jpg", clicked: false },
     { id: 11, image: "placeholder.jpg", clicked: false },
     { id: 12, image: "placeholder.jpg", clicked: false }
-  ]);
+  ]));
 
   function handleCardClick(id) {
     if (gameStatus === "lost") return;
 
     const clickedCard = cards.find(card => card.id === id);
-
+    console.log("Card " + id + " was clicked");
     if (clickedCard.clicked === true) {
       setBestScore(prevBest => Math.max(prevBest, score));
       setGameStatus("lost");
@@ -38,10 +38,12 @@ function App() {
     setScore(prevScore => prevScore + 1);
 
     setCards(prevCards =>
-      prevCards.map(card =>
+      shuffle(
+        prevCards.map(card =>
         card.id === id
           ? { ...card, clicked: true }
           : card
+        )
       )
     );
   }
@@ -53,6 +55,20 @@ function App() {
     setCards(prevCards =>
       prevCards.map(card => ({ ...card, clicked: false }))
     );
+  }
+
+  function shuffle(array) {
+    const copiedArray = [...array];
+    const output = [];
+    let n = copiedArray.length;
+    let i;
+
+    while (n) {
+      i = Math.floor(Math.random() * n--);
+      output.push(copiedArray.splice(i, 1)[0]);
+    }
+
+    return output;
   }
 
   return (
