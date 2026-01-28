@@ -4,7 +4,7 @@ import placeholder from "../assets/placeholder.jpg";
 export default function Gameboard({ cards, handleCardClick }) {
 
     return (
-    <>
+    <div className="gameboard">
       {cards.map((card) => {
         return (
           <Card
@@ -15,6 +15,6 @@ export default function Gameboard({ cards, handleCardClick }) {
           />
         );
       })}
-    </>
+    </div>
   )
 }

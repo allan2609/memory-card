@@ -82,10 +82,10 @@ function App() {
   }
 
   return (
-    <>
+    <div className="main-layout">
       <Header gameStatus={gameStatus} resetGame={resetGame} score={score} bestScore={bestScore}></Header>
       <Gameboard cards={cards} handleCardClick={handleCardClick}></Gameboard>
-    </>
+    </div>
   )
 }
 
