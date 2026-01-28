@@ -1,0 +1,7 @@
+.gameboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 15rem);
+  grid-auto-rows: 24rem;
+  align-items: center;
+  justify-content: center;
+}

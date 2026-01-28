@@ -1,5 +1,6 @@
 import Card from "./Card.jsx";
 import placeholder from "../assets/placeholder.jpg";
+import "./Gameboard.css";
 
 export default function Gameboard({ cards, handleCardClick }) {
 

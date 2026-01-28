@@ -1,3 +1,5 @@
+import "./Scoreboard.css";
+
 export default function Scoreboard({ score, bestScore }) {
   return (
     <div className="scoreboard">
