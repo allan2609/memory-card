@@ -6,28 +6,42 @@ import Gameboard from "./components/Gameboard";
 function App() {
 
   const [gameStatus, setGameStatus] = useState("playing");
+  const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [loading, setLoading] = useState(true);
 
-  const [cards, setCards] = useState(shuffle([
-    { id: 1, image: "placeholder.jpg", clicked: false },
-    { id: 2, image: "placeholder.jpg", clicked: false },
-    { id: 3, image: "placeholder.jpg", clicked: false },
-    { id: 4, image: "placeholder.jpg", clicked: false },
-    { id: 5, image: "placeholder.jpg", clicked: false },
-    { id: 6, image: "placeholder.jpg", clicked: false },
-    { id: 7, image: "placeholder.jpg", clicked: false },
-    { id: 8, image: "placeholder.jpg", clicked: false },
-    { id: 9, image: "placeholder.jpg", clicked: false },
-    { id: 10, image: "placeholder.jpg", clicked: false },
-    { id: 11, image: "placeholder.jpg", clicked: false },
-    { id: 12, image: "placeholder.jpg", clicked: false }
-  ]));
+  useEffect(() => {
+    async function fetchCards() {
+      try {
+        const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=12&api_key=live_5SvDl5EYxTBga2CO03yFPNGZcoDhUzHiYZw7SuOGTvafyVgGrEEuBqyxNbIB56yc");
+        const data = await response.json();
+        setLoading(true);
+
+        const formattedCards = shuffle(
+          data.map((item, index) => ({
+            id: index + 1,
+            image: item.url,
+            description: item.description,
+            clicked: false
+          }))
+        );
+
+        setCards(formattedCards);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch cards:", error);
+      }
+    }
+
+    fetchCards();
+  }, []);
+
 
   useEffect(() => {
     const clickedCount = cards.filter(card => card.clicked).length;
 
-    if (clickedCount === cards.length) {
+    if (clickedCount === cards.length && cards.length !== 0) {
       setGameStatus("won");
     }
   }, [cards]);

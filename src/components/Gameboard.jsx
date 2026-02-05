@@ -1,5 +1,4 @@
 import Card from "./Card.jsx";
-import placeholder from "../assets/placeholder.jpg";
 import "./Gameboard.css";
 
 export default function Gameboard({ cards, handleCardClick }) {
@@ -11,7 +10,7 @@ export default function Gameboard({ cards, handleCardClick }) {
           <Card
             key={card.id}
             id={card.id}
-            image={placeholder}
+            image={card.image}
             handleCardClick={handleCardClick}
           />
         );
