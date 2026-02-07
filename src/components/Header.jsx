@@ -1,4 +1,5 @@
 import Scoreboard from "./Scoreboard";
+import "./Header.css";
 
 export default function Header({ gameStatus, resetGame, score, bestScore }) {
     return (

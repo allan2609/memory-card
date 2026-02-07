@@ -1,0 +1,9 @@
+.header {
+  max-width: 80rem;
+  align-self: center;
+  padding-bottom: 2rem;
+}
+
+.header p {
+  font-size: 1.5rem;
+}
