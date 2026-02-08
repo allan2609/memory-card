@@ -77,7 +77,7 @@ function App() {
     setGameStatus("playing");
 
     setCards(prevCards =>
-      prevCards.map(card => ({ ...card, clicked: false }))
+      shuffle(prevCards.map(card => ({ ...card, clicked: false })))
     );
   }
 
