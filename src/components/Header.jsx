@@ -4,7 +4,9 @@ import "./Header.css";
 export default function Header({ gameStatus, resetGame, score, bestScore }) {
     return (
     <div className="header">
-      <p>How many cards can you click on without clicking more than once on any single card?</p>
+      {gameStatus === "playing" && <p>How many cards can you click on without clicking more than once on any single card?</p>}
+      {gameStatus === "won" && <p>Nice! You clicked all the cards 👏</p>}
+      {gameStatus === "lost" && <p>Oops — that card was already clicked.</p>}
       <Scoreboard score={score} bestScore={bestScore}></Scoreboard>
       {gameStatus === "lost" && <button onClick={resetGame}>Reset game</button>}
     </div>
