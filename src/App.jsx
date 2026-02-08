@@ -95,6 +95,10 @@ function App() {
     return output;
   }
 
+   if (loading) {
+    return <p>Loading cards...</p>;
+  }
+
   return (
     <div className="main-layout">
       <Header gameStatus={gameStatus} resetGame={resetGame} score={score} bestScore={bestScore}></Header>
