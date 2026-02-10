@@ -12,31 +12,8 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchCards() {
-      try {
-        const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=12&api_key=live_5SvDl5EYxTBga2CO03yFPNGZcoDhUzHiYZw7SuOGTvafyVgGrEEuBqyxNbIB56yc");
-        const data = await response.json();
-        setLoading(true);
-
-        const formattedCards = shuffle(
-          data.map((item, index) => ({
-            id: index + 1,
-            image: item.url,
-            description: item.description,
-            clicked: false
-          }))
-        );
-
-        setCards(formattedCards);
-        setLoading(false);
-      } catch (error) {
-        console.error("Failed to fetch cards:", error);
-      }
-    }
-
     fetchCards();
   }, []);
-
 
   useEffect(() => {
     const clickedCount = cards.filter(card => card.clicked).length;
@@ -72,6 +49,28 @@ function App() {
     );
   }
 
+  async function fetchCards() {
+    try {
+      const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=12&api_key=live_5SvDl5EYxTBga2CO03yFPNGZcoDhUzHiYZw7SuOGTvafyVgGrEEuBqyxNbIB56yc");
+      const data = await response.json();
+      setLoading(true);
+
+      const formattedCards = shuffle(
+        data.map((item, index) => ({
+          id: index + 1,
+          image: item.url,
+          description: item.description,
+          clicked: false
+        }))
+      );
+
+      setCards(formattedCards);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch cards:", error);
+    }
+  }
+
   function resetGame() {
     setScore(0);
     setGameStatus("playing");
@@ -79,6 +78,11 @@ function App() {
     setCards(prevCards =>
       shuffle(prevCards.map(card => ({ ...card, clicked: false })))
     );
+  }
+
+  function newGame() {
+    resetGame();
+    fetchCards();
   }
 
   function shuffle(array) {
@@ -101,7 +105,7 @@ function App() {
 
   return (
     <div className="main-layout">
-      <Header gameStatus={gameStatus} resetGame={resetGame} score={score} bestScore={bestScore}></Header>
+      <Header gameStatus={gameStatus} resetGame={resetGame} newGame={newGame} score={score} bestScore={bestScore}></Header>
       <Gameboard cards={cards} handleCardClick={handleCardClick}></Gameboard>
     </div>
   )
