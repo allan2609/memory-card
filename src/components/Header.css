@@ -1,21 +1,27 @@
 .header {
-  max-width: 80rem;
+  width: min(25rem, 100%);
   align-self: center;
   padding-bottom: 2rem;
   margin-top: -1rem;
 }
 
 .header p {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
-.header button {
-  font-size: 1.25rem;
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  font-size: 1.1rem;
   border: 2px solid lightgoldenrodyellow;
   background-color: #494949;
   margin: 1rem 0;
+  width: 11rem;
 }
 
-.header button:hover {
+button:hover {
   border: 2px solid blue;
 }

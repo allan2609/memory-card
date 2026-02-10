@@ -8,7 +8,7 @@ export default function Header({ gameStatus, resetGame, newGame, score, bestScor
       {gameStatus === "won" && <p>Nice! You clicked all the cards 👏</p>}
       {gameStatus === "lost" && <p>Oops — that card was already clicked.</p>}
       <Scoreboard score={score} bestScore={bestScore}></Scoreboard>
-      {gameStatus === "lost" && <><button onClick={resetGame}>Reset game</button><button onClick={newGame}>Different cats</button></>}
+      {gameStatus === "lost" && <div className="buttons"><button onClick={resetGame}>Reset game</button><button onClick={newGame}>Different cats</button></div>}
     </div>
   )
 }
