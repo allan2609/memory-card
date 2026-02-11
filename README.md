@@ -1,16 +1,17 @@
-# React + Vite
+This is Project: Memory Card from The Odin Project.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The aim of the memory card game is to click on as many cards as possible without clicking more than once on any single card.
 
-Currently, two official plugins are available:
+The game fetches random images from the Cat API and shuffles them after every click.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Essential elements of the game, such as cards, score, and status are kept in state.
 
-## React Compiler
+When the game ends, the user can either reshuffle the existing cards, or fetch new cards from the API.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tools used: React, Vite.
 
-## Expanding the ESLint configuration
+Deployed using Netlify.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Live solution:
+
+https://clever-gecko-fa4f92.netlify.app/
