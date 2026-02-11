@@ -50,10 +50,11 @@ function App() {
   }
 
   async function fetchCards() {
+    setLoading(true);
+    setCards([]);
     try {
       const response = await fetch("https://api.thecatapi.com/v1/images/search?limit=12&api_key=live_5SvDl5EYxTBga2CO03yFPNGZcoDhUzHiYZw7SuOGTvafyVgGrEEuBqyxNbIB56yc");
       const data = await response.json();
-      setLoading(true);
 
       const formattedCards = shuffle(
         data.map((item, index) => ({
@@ -81,7 +82,8 @@ function App() {
   }
 
   function newGame() {
-    resetGame();
+    setScore(0);
+    setGameStatus("playing");
     fetchCards();
   }
 
@@ -100,7 +102,7 @@ function App() {
   }
 
    if (loading) {
-    return <p>Loading cards...</p>;
+    return <p>Loading cats...</p>;
   }
 
   return (
