@@ -28,8 +28,6 @@ function App() {
 
     const clickedCard = cards.find(card => card.id === id);
 
-    console.log("Card " + id + " was clicked");
-
     if (clickedCard.clicked === true) {
       setBestScore(prevBest => Math.max(prevBest, score));
       setGameStatus("lost");
@@ -60,7 +58,6 @@ function App() {
         data.map((item, index) => ({
           id: index + 1,
           image: item.url,
-          description: item.description,
           clicked: false
         }))
       );
